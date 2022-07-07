@@ -73,15 +73,15 @@ class ProductDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name')->title('Name'),
-            Column::make('category' , 'category_id'),
-            Column::make('price')->title('Price'),
-            Column::make('quantity')->title('Quantity'),
-            Column::make('created_at'),
-            Column::computed('action')
+            Column::make('name')->title('Produkt'),
+            Column::make('category' , 'Kategoria'),
+            Column::make('price')->title('Cena'),
+            Column::make('quantity')->title('Ilość'),
+            Column::make('created_at')->title('Produkt'),
+            Column::computed('action')->title('Akcja')
                 ->exportable(false)
                 ->printable(false)
-                ->addClass('text-center')->title('Action'),
+                ->addClass('text-center')
         ];
     }
 
