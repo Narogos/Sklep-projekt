@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\frontend\FrontendController;
+use App\Http\Controllers\frontend\SingleProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['as' => 'frontend.'], function ()
+{
+    Route::get('/', [FrontendController::class, 'index'])->name('home');
+    Route::get('/{category}/', [FrontendController::class, 'categoryProduct'])->name('category-product');
+    Route::get('/{slugCategory}/{product}', [SingleProductController::class, 'index'])->name('single-product');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
