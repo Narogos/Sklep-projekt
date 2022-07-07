@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\frontend\SingleProductController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware' => ['auth']], function ()
+{
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('category' , CategoryController::class);
+    Route::resource('product' , ProductController::class);
+    Route::resource('order' , OrderController::class);
+});
+
 
 Route::group(['as' => 'frontend.'], function ()
 {
