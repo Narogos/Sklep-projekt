@@ -24,29 +24,8 @@ class OrderDataTable extends DataTable
             ->addColumn('action', function (Order $model)
             {
                 return view('backend.order.action', compact('model'));
-            })
-            ->editColumn('Product', function ($model)
-            {
-                return $model->product->name;
-            })
-            ->filterColumn('product_id', function ($query, $keyword)
-            {
-                $query->whereHas('Product', function ($q) use ($keyword)
-                {
-                    $q->where('name', 'like', "%{$keyword}%");
-                });
-            })
-            ->editColumn('User', function ($model)
-            {
-                return $model->user->name;
-            })
-            ->filterColumn('user_id', function ($query, $keyword)
-            {
-               $query->whereHas('User', function ($q) use ($keyword)
-               {
-                   $q->where('name', 'like', "%{$keyword}%");
-               });
             });
+
     }
 
 
@@ -81,9 +60,6 @@ class OrderDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('Produkt', 'product_id'),
-            Column::make('User' , 'user_id'),
-            Column::make('quantity')->title('Ilość'),
             Column::make('status')->title('Status'),
             Column::make('data_order')->title('Data Zamówienia'),
             Column::computed('action')
