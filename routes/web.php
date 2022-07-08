@@ -4,6 +4,7 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\frontend\CardController;
 use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\frontend\SingleProductController;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,9 @@ Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware' => ['auth']], fun
 Route::group(['as' => 'frontend.'], function ()
 {
     Route::get('/', [FrontendController::class, 'index'])->name('home');
+    Route::get('/koszyk', [CardController::class, 'index'])->name('cart-index');
     Route::get('/{category}/', [FrontendController::class, 'categoryProduct'])->name('category-product');
     Route::get('/{slugCategory}/{product}', [SingleProductController::class, 'index'])->name('single-product');
+    Route::post('/produkt/{product}', [CardController::class, 'addProduct'])->name('add-product');
+    Route::post('/koszyk/{product}', [CardController::class, 'deleteProduct'])->name('delete-product');
 });
