@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => $faker->numberBetween(1,2000),
                 'quantity' => $faker->numberBetween(1,40),
                 'description' => $faker->text(100),
-                'image' => $faker->text(5),
+                'image' => $faker->randomElement(['1.png', '3.png', '4.png']),
                 'category_id' => $faker->numberBetween(6,15)
             ]);
         }

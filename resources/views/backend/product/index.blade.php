@@ -21,7 +21,7 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Lista produktów</h3>
-                                <a href="{{route('admin.category.create')}}" class="btn btn-primary">Dodaj produkt</a>
+                                <a href="{{route('admin.product.create')}}" class="btn btn-primary">Dodaj produkt</a>
                             </div>
                         </div>
                         <div class="card-body">

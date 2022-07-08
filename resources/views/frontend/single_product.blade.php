@@ -26,7 +26,8 @@
                     <div class="col-sm-5">
                         <div class="product-images">
                             <div class="product-main-img">
-                                <img class="img-fluid" src="https://forum.dobreprogramy.pl/uploads/default/original/3X/5/0/50514bbb032ee1b3b0b57a294839719d96894beb.jpeg" alt="">
+                                <img class="img-fluid"
+                                     src="images/{{$product->image ?? null}}">
                             </div>
                         </div>
                     </div>

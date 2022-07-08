@@ -23,7 +23,7 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Dodaj produkt</h3>
-                                <a href="" class="btn btn-primary">Powrót</a>
+                                <a href="{{route('admin.product.index')}}" class="btn btn-primary">Powrót</a>
                             </div>
                         </div>
                         <div class="card-body p-0">
@@ -45,10 +45,6 @@
                                             <div class="form-group">
                                                 <label for="name">Nazwa produktu</label>
                                                 <input type="name" name="name" value="" class="form-control" placeholder="nazwa">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="name">Slug</label>
-                                                <input type="name" name="slug" value="" class="form-control" placeholder="slug">
                                             </div>
                                             <div class="form-group">
                                                 <label for="category"> Wybierz kategorie</label>
