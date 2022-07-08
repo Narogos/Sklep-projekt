@@ -23,15 +23,25 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Koszyk</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('frontend.cart-index')}}">Koszyk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('frontend.cart-index')}}">Panel</a>
+                    </li>
+                @endauth
+
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('login')}}">Login</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('register')}}">Register</a>
+                    </li>
+                @endguest
+
             </ul>
         </div>
     </div>

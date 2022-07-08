@@ -6,7 +6,7 @@
                 <div class="d-flex flex-row justify-content-between
                  align-items-center p-2 bg-white mt-4 px-3 rounded"
                      v-for="(cart, index) in carts" :key="index">
-                    <div class="mr-1"><img class="rounded" src="https://i.imgur.com/XiFJkhI.jpg" width="70">
+                    <div class="mr-1"><img class="rounded" :src="'images/'+ cart.products.image" width="150">
                     </div>
                     <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">{{cart.products.name}}</span>
                     </div>

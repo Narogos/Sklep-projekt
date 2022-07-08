@@ -12,7 +12,7 @@ class FrontendController extends Controller
     public function index()
     {
         return view('frontend.index',[
-            'products' => Product::all(),
+            'products' => Product::with('category')->get(),
             'categoriesList' => Category::with('children')->whereNull('parent_id')->get()
         ]);
     }

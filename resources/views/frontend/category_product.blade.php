@@ -24,7 +24,7 @@
                         @foreach($category->products as $item)
                             <div class="col-md-6 col-sm-6 col-lg-4 mt-4 text-center">
                                 <img class="img-fluid"
-                                     src="https://forum.dobreprogramy.pl/uploads/default/original/3X/5/0/50514bbb032ee1b3b0b57a294839719d96894beb.jpeg">
+                                     src="images/{{$item->image ?? null}}">
                                 <div class="content align-items-center">
                                     <span><a href="{{route('frontend.single-product',['slugCategory' => $category->name, 'product' => $item->slug ?? 'as'])}}">{{$item->name}}</a></span> </br>
                                     <span> Cena: {{$item->price}} zł </span>   </br>

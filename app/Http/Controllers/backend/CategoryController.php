@@ -22,11 +22,10 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        Category::create($request->all());
+        toast('Kategoria została dodana','success');
 
-    }
-
-    public function show($id)
-    {
+        return redirect()->route('admin.category.index');
 
     }
 
@@ -41,13 +40,17 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update( Request $request, Category $category)
     {
+        $category->update($request->all());
 
+        toast('Kategoria została zaaktualizowana','success');
+
+        return redirect()->route('admin.category.index');
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-
+        $category->delete();
     }
 }
