@@ -30,9 +30,14 @@ class CardController extends Controller
 
         return response()->json($card);
     }
+    public function addOrder(Request $request)
+    {
+        $order = Order::create([
+            'user_id' => auth()->id(), 'product_id' => $request->id]);
+    }
 
     public function deleteProduct(Request $request)
     {
-        dd($request);
+        Cart::where('id', $request->id)->delete();
     }
 }

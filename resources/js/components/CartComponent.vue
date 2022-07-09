@@ -19,7 +19,7 @@
                     <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
                 </div>
                 <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                    <button class="btn btn-outline-warning btn-sm ml-2" type="button">Zamów</button>
+                    <button class="btn btn-outline-warning btn-sm ml-2" @click.prevent="addOrder(cart.products.id)" type="button" >Zamów</button>
                 </div>
         </div>
 </template>
@@ -41,7 +41,15 @@ export default {
         },
         deleteProduct(cart)
         {
-            axios.post('/koszyk/'+cart)
+            axios.delete('koszyk/{id}').then((response) => {
+                this.$toast.success(`Produkt został usuniety!`);
+            }).catch((errors) => {});
+        },
+        addOrder(id)
+        {
+            axios.post('koszyk/order/{id}').then((response) => {
+                this.$toast.success(`Zamówienie zostało dodane`);
+            }).catch((errors) => {});
         }
     },
     mounted() {
