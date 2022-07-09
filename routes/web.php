@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware' => ['auth']], function ()
 {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -35,6 +37,8 @@ Route::group(['as' => 'frontend.'], function ()
 {
     Route::get('/', [FrontendController::class, 'index'])->name('home');
     Route::get('/koszyk', [CardController::class, 'index'])->name('cart-index');
+    Route::get('/koszyk/show-Product', [CardController::class, 'show-Product'])->name('show-product');
+    Route::post('/koszyk/order/{id}', [CardController::class, 'addOrder'])->name('add-order');
     Route::get('/{category}/', [FrontendController::class, 'categoryProduct'])->name('category-product');
     Route::get('/{slugCategory}/{product}', [SingleProductController::class, 'index'])->name('single-product');
     Route::post('/produkt/{product}', [CardController::class, 'addProduct'])->name('add-product');
